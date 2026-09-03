@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Mark is the visual website annotation companion for designers, developers, and vibe coders. Highlight, draw, note, save, and hand off feedback without losing context." />
+    <meta name="keywords" content="website annotation, visual feedback, Safari extension, web design feedback, developer tools, QA screenshots" />
+    <meta name="author" content="spartadata" />
+    <meta name="theme-color" content="#ffd84f" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#202832" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mark" />
+    <meta property="og:title" content="Mark - See it. Mark it. Ship it." />
+    <meta property="og:description" content="Visual website annotation for designers, developers, and vibe coders. Highlight, draw, outline, note, and save the whole review." />
+    <meta property="og:image" content="./social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mark - See it. Mark it. Ship it." />
+    <meta name="twitter:description" content="Visual website annotation for Safari." />
+    <meta name="twitter:image" content="./social-card.png" />
+    <title>Mark - See it. Mark it. Ship it.</title>
+    <link rel="icon" href="./public/icon/32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="./public/icon/256.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="stylesheet" href="./styles.css?v=10" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Mark home" data-brand-logo>
+        <svg class="brand-icon" width="34" height="34" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="header-mark-tile" x1="8" y1="6" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#202832" />
+              <stop offset="1" stop-color="#43505e" />
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="15" fill="url(#header-mark-tile)" />
+          <path d="M16 43C25 28 34 21 49 22" fill="none" stroke="#ffd84f" stroke-width="10" stroke-linecap="round" />
+          <circle cx="46" cy="43" r="7" fill="#78dfbc" />
+        </svg>
+        <span>Mark</span>
+      </a>
+      <button class="nav-toggle control" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-nav>
+        <a href="#why">Why Mark</a><a href="#tools">Tools</a><a href="#privacy">Privacy</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-control control" type="button" aria-label="Appearance: Auto" title="Appearance: Auto" data-theme-toggle><span aria-hidden="true" data-theme-icon>◐</span></button>
+        <button class="button button-small button-dark" type="button" data-open-purchase>Try Mark</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-heading">
+        <div class="hero-mark mark-doodle-field reveal">
+          <span class="doodle doodle-outline" aria-hidden="true"></span>
+          <span class="doodle doodle-stroke" aria-hidden="true"></span>
+          <span class="doodle doodle-note" aria-hidden="true">Ship it.</span>
+          <p class="eyebrow">The visual layer your browser is missing</p>
+          <h1 class="sr-only" id="hero-heading">Mark. See it, mark it, ship it.</h1>
+          <button class="mark-mix-wordmark is-loading" type="button" aria-label="Replay the Mark wordmark animation" data-mark-wordmark>
+            <span class="hero-mix-m">M<i class="hero-mix-marker" aria-hidden="true"></i></span>
+            <span class="hero-mix-a" aria-hidden="true"><i></i></span>
+            <span class="hero-mix-r" aria-hidden="true">r<i></i></span>
+            <span class="hero-mix-k" aria-hidden="true"><b>k</b><i></i></span>
+          </button>
+          <p class="hero-statement">See it. Mark it. Ship it.</p>
+          <p class="hero-support">The must-have Safari companion for designers, developers, and vibe coders. Turn any live site, local build, web app, or AI-generated experience into clear, visual next steps.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#live-product">Try the live demo</a>
+            <button class="button button-quiet" type="button" data-open-purchase>Get Mark</button>
+          </div>
+          <p class="hero-proof"><span></span> Built for Mac, iPad, and iPhone</p>
+        </div>
+
+        <div class="product-experience reveal" id="live-product" data-product-experience>
+          <div class="experience-bar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <p><span></span> Live Mark workspace</p>
+            <div class="device-switcher" role="group" aria-label="Preview device">
+              <button type="button" class="is-active" aria-pressed="true" data-device="desktop">Mac</button>
+              <button type="button" aria-pressed="false" data-device="tablet">iPad</button>
+              <button type="button" aria-pressed="false" data-device="phone">iPhone</button>
+            </div>
+          </div>
+          <div class="live-stage" data-device-stage="desktop">
+            <iframe src="./demo/index.html?embed=1&simulate=12&accountControls=0&v=13" title="Interactive Mark annotation product preview" loading="eager" data-product-frame></iframe>
+            <div class="frame-loading" aria-hidden="true" data-frame-loading><img src="./public/icon/mark.svg" alt="" width="58" height="58" /><span>Opening Mark</span></div>
+          </div>
+          <p class="experience-note"><span></span> It is real. Pick a tool and mark the page.</p>
+        </div>
+      </section>
+
+      <section class="fomo-strip" aria-label="What Mark replaces">
+        <p>Stop describing the bug.</p><p>Stop losing the screenshot.</p><p>Stop rebuilding the context.</p>
+      </section>
+
+      <section class="why section" id="why" aria-labelledby="why-title">
+        <div class="why-heading reveal">
+          <p class="eyebrow">Feedback belongs on the work</p>
+          <h2 id="why-title">Your workflow is visual.<br />Your feedback should be too.</h2>
+        </div>
+        <div class="why-copy reveal">
+          <p>Mark keeps the page, the breakpoint, the annotation, and the handoff together. No context reconstruction. No mystery screenshots. No extra canvas.</p>
+          <strong>One palette. The whole review loop.</strong>
+        </div>
+      </section>
+
+      <section class="tools" id="tools" aria-labelledby="tools-title">
+        <div class="section tools-heading reveal">
+          <p class="eyebrow">Everything you need. Nothing in the way.</p>
+          <h2 id="tools-title">Four tools.<br />A thousand fewer words.</h2>
+        </div>
+        <div class="tool-bands">
+          <article class="tool-band tool-highlight reveal">
+            <span class="tool-number">01</span>
+            <div class="tool-copy"><h3>Highlight</h3><p>Sweep across the exact words that matter.</p></div>
+            <div class="tool-gesture gesture-highlight" aria-hidden="true">
+              <div class="sample-page sample-copy">
+                <span class="sample-label">Review notes</span>
+                <p>Ship the clearer version and <mark>keep the context attached.</mark></p>
+                <i class="sample-line sample-line-long"></i><i class="sample-line sample-line-short"></i>
+              </div>
+            </div>
+          </article>
+          <article class="tool-band tool-outline reveal">
+            <span class="tool-number">02</span>
+            <div class="tool-copy"><h3>Outline</h3><p>Frame the exact region that needs attention.</p></div>
+            <div class="tool-gesture gesture-outline" aria-hidden="true">
+              <div class="sample-page sample-layout">
+                <span class="sample-label">Landing page</span>
+                <div class="sample-layout-copy"><i></i><i></i><i></i></div>
+                <div class="sample-layout-media"></div>
+                <div class="true-outline"><b></b><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </article>
+          <article class="tool-band tool-marker reveal">
+            <span class="tool-number">03</span>
+            <div class="tool-copy"><h3>Draw</h3><p>Lay down a solid marker line, exactly where you mean it.</p></div>
+            <div class="tool-gesture gesture-marker" aria-hidden="true">
+              <div class="sample-page sample-draw">
+                <span class="sample-label">Component review</span>
+                <div class="sample-draw-row"><i></i><i></i><i></i></div>
+                <svg viewBox="0 0 420 176" preserveAspectRatio="none">
+                  <path d="M28 124 L86 72 L139 116 L206 49 L278 94 L382 37" />
+                </svg>
+              </div>
+            </div>
+          </article>
+          <article class="tool-band tool-note reveal">
+            <span class="tool-number">04</span>
+            <div class="tool-copy"><h3>Note</h3><p>Put the why right beside the thing you marked.</p></div>
+            <div class="tool-gesture gesture-note" aria-hidden="true">
+              <div class="sample-page sample-note-page">
+                <i class="sample-line sample-line-long"></i><i class="sample-line sample-line-short"></i>
+                <div class="true-note"><span class="note-grip"></span><b class="note-close"></b><p>Give this section more room to breathe.</p><i class="note-corner"></i></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="people section" aria-labelledby="people-title">
+        <div class="people-intro reveal">
+          <p class="eyebrow">The companion your browser needed</p>
+          <h2 id="people-title">Built for people who make the web.</h2>
+          <p>Mark closes the gap between seeing a problem and getting it fixed.</p>
+        </div>
+        <div class="people-list">
+          <article class="reveal"><span>Designers</span><h3>Review the real interface, not a memory of it.</h3></article>
+          <article class="reveal"><span>Developers</span><h3>Turn visual bugs into implementation-ready evidence.</h3></article>
+          <article class="reveal"><span>Vibe coders</span><h3>Give agents visual context they can actually act on.</h3></article>
+        </div>
+        <p class="people-scope reveal">Websites. Web apps. SaaS. Local builds. AI-generated products. Online or offline.</p>
+      </section>
+
+      <section class="privacy-section" id="privacy" aria-labelledby="privacy-title">
+        <div class="privacy-inner section reveal">
+          <div><p class="eyebrow">Private by design</p><h2 id="privacy-title">Your work stays yours.</h2></div>
+          <div class="privacy-copy">
+            <p>Mark does not collect, track, sell, or share your personal data. Your annotations and files stay on your device or in the storage location you choose.</p>
+            <ul><li>No accounts</li><li>No analytics</li><li>No location tracking</li><li>No advertising profiles</li></ul>
+            <a href="./privacy.html">Read the privacy policy <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="closing-title">
+        <div class="closing-inner reveal">
+          <img src="./public/icon/mark.svg" alt="" width="64" height="64" />
+          <p class="eyebrow">Do not ship another mystery screenshot</p>
+          <h2 id="closing-title">Make your mark.<br />Move the work.</h2>
+          <p>One indispensable visual toolkit for the entire web product lifecycle.</p>
+          <button class="button button-primary" type="button" data-open-purchase>Get Mark for Safari</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#top"><img src="./public/icon/mark.svg" alt="" width="30" height="30" /><span>Mark</span></a>
+      <p>See it. Mark it. Ship it.</p>
+      <div><a href="./app-store.html">App Store preview</a><a href="./support.html">Support</a><a href="./privacy.html">Privacy</a><span>© <span data-year></span> Mark</span></div>
+    </footer>
+
+    <dialog class="purchase-dialog" data-purchase-dialog aria-labelledby="purchase-title">
+      <form method="dialog">
+        <button class="dialog-close control" value="close" aria-label="Close purchase options">×</button>
+        <img src="./public/icon/mark.svg" alt="" width="48" height="48" />
+        <p class="eyebrow">Mark for Safari</p>
+        <h2 id="purchase-title">Be first to make your mark.</h2>
+        <p>Try every Mark tool free for 30 days. Continue for $13.99 per year, billed by Apple.</p>
+        <div class="plan-options" aria-label="Planned purchase option"><div class="is-featured"><span>30 days free</span><small>Then $13.99 per year</small></div></div>
+        <a class="button button-primary button-full" href="mailto:?subject=Keep%20me%20posted%20about%20Mark">Keep me posted</a>
+        <small class="dialog-note">No purchase is made from this preview.</small>
+      </form>
+    </dialog>
+    <script src="./site.js?v=8" defer></script>
+  </body>
+</html>

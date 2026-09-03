@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Setup help and support for Mark, the Safari website annotation extension." />
+    <title>Support | Mark</title>
+    <link rel="icon" href="./public/icon/32.png" sizes="32x32" />
+    <link rel="stylesheet" href="./styles.css?v=10" />
+    <style>
+      .support-page { min-height: 100svh; padding: max(24px, env(safe-area-inset-top)) var(--page-pad) max(48px, env(safe-area-inset-bottom)); }
+      .support-nav, .support-document { width: min(100%, 760px); margin-inline: auto; }
+      .support-nav { min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .back-link { min-height: 44px; padding: 0 14px; border-radius: 22px; display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 14px; font-weight: 680; text-decoration: none; }
+      .back-link:hover, .back-link:focus-visible { color: var(--ink); background: color-mix(in srgb, var(--surface-soft) 76%, transparent); }
+      .support-document { padding-top: clamp(72px, 11vw, 124px); }
+      .support-document > header { padding-bottom: clamp(44px, 7vw, 72px); border-bottom: 1px solid var(--line); }
+      .support-document h1 { max-width: 680px; margin: 0; font-size: clamp(48px, 9vw, 82px); font-weight: 800; line-height: .98; letter-spacing: 0; }
+      .support-summary { max-width: 690px; margin: 24px 0 0; color: var(--muted); font-size: clamp(19px, 3vw, 24px); line-height: 1.5; }
+      .support-section { padding: 34px 0; border-bottom: 1px solid var(--line); }
+      .support-section h2 { margin: 0 0 12px; font-size: clamp(23px, 4vw, 30px); line-height: 1.15; letter-spacing: 0; }
+      .support-section p, .support-section li { color: var(--muted); font-size: 17px; line-height: 1.65; }
+      .support-section ol { margin: 16px 0 0; padding-left: 24px; }
+      .support-section li + li { margin-top: 8px; }
+      .support-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+      .support-footer { padding-top: 36px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 13px; }
+      @media (max-width: 520px) { .support-page { padding-inline: max(18px, env(safe-area-inset-left)); } .support-document { padding-top: 58px; } .support-footer { align-items: flex-start; flex-direction: column; } }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#support">Skip to support</a>
+    <main class="support-page" id="support">
+      <nav class="support-nav" aria-label="Support page navigation">
+        <a class="brand" href="./index.html" aria-label="Mark home"><img src="./public/icon/mark.svg" alt="" width="34" height="34" /><span>Mark</span></a>
+        <a class="back-link" href="./index.html"><span aria-hidden="true">&#8592;</span> Back to Mark</a>
+      </nav>
+      <article class="support-document">
+        <header>
+          <p class="eyebrow">Mark support</p>
+          <h1>Ready when you are.</h1>
+          <p class="support-summary">Enable Mark in Safari, open any webpage, and select the Mark button to begin.</p>
+        </header>
+        <section class="support-section" aria-labelledby="enable-heading">
+          <h2 id="enable-heading">Enable the extension</h2>
+          <ol>
+            <li>Open the Mark app after installation.</li>
+            <li>Follow the on-screen steps to turn on Mark in Safari.</li>
+            <li>Allow access for the websites you want to annotate.</li>
+          </ol>
+        </section>
+        <section class="support-section" aria-labelledby="restore-heading">
+          <h2 id="restore-heading">Restore your subscription</h2>
+          <p>Open the Mark app and select Restore Purchases. Use the same Apple Account that started the subscription. Apple handles billing, cancellation, and renewal in Apple Account settings.</p>
+        </section>
+        <section class="support-section" aria-labelledby="files-heading">
+          <h2 id="files-heading">Find saved images</h2>
+          <p>Mark saves images to the local or iCloud Drive location shown in the Library. Copies shared to Photos, Files, or another app remain there until you remove them from that destination.</p>
+        </section>
+        <section class="support-section" aria-labelledby="help-heading">
+          <h2 id="help-heading">Still need help?</h2>
+          <p>Open Mark&rsquo;s App Store page and choose App Support to contact spartadata. Include your device, operating system version, and a short description of what happened. Do not include private webpage content.</p>
+          <div class="support-actions"><a class="button button-secondary" href="./privacy.html">Privacy policy</a></div>
+        </section>
+        <footer class="support-footer">
+          <a class="back-link" href="./index.html"><span aria-hidden="true">&#8592;</span> Back to Mark</a>
+          <span>&copy; <span data-year>2026</span> spartadata</span>
+        </footer>
+      </article>
+    </main>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("mark-marketing-theme");
+        if (["auto", "light", "dark"].includes(savedTheme)) document.documentElement.dataset.theme = savedTheme;
+      } catch {}
+      document.querySelector("[data-year]").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>

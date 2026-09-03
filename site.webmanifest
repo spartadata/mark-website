@@ -1,0 +1,26 @@
+{
+  "name": "Mark - Visual Website Annotation",
+  "short_name": "Mark",
+  "description": "Visual website annotation for Safari.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f7f8f9",
+  "theme_color": "#ffd84f",
+  "icons": [
+    {
+      "src": "/public/icon/128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/icon/256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/icon/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

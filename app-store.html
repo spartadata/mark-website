@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Preview the proposed Mark listing for the App Store." />
+    <title>Mark - App Store Preview</title>
+    <link rel="icon" href="./public/icon/32.png" sizes="32x32" />
+    <link rel="stylesheet" href="./app-store.css?v=3" />
+  </head>
+  <body>
+    <header class="preview-header">
+      <a href="./index.html" aria-label="Back to the Mark website"><span aria-hidden="true">‹</span> Mark website</a>
+      <p>App Store preview</p>
+      <button type="button" data-theme aria-label="Switch appearance">◐</button>
+    </header>
+
+    <main>
+      <section class="storefront" aria-labelledby="app-title">
+        <div class="app-summary">
+          <picture class="app-icon">
+            <source media="(prefers-color-scheme: dark)" srcset="./app-icons/universal-icon-dark-1024@1x.png" />
+            <img src="./app-icons/universal-icon-1024@1x.png" alt="Mark app icon" />
+          </picture>
+          <div class="app-identity">
+            <p class="eyebrow">Safari Extension</p>
+            <h1 id="app-title">Mark</h1>
+            <p class="subtitle">Visual feedback for Safari</p>
+            <p class="developer">spartadata</p>
+            <div class="get-row">
+              <button type="button" aria-label="Get Mark">GET</button>
+              <span>In-App Purchases</span>
+            </div>
+          </div>
+        </div>
+
+        <dl class="store-facts">
+          <div><dt>New</dt><dd>No Ratings Yet</dd><small>Ratings</small></div>
+          <div><dt>4+</dt><dd>Years Old</dd><small>Age</small></div>
+          <div><dt>Productivity</dt><dd>Category</dd><small>Made for Safari</small></div>
+          <div><dt>iPhone · iPad · Mac</dt><dd>Devices</dd><small>Apple ecosystem</small></div>
+        </dl>
+
+        <div class="subscription-callout">
+          <div><span>30 days free</span><strong>Then $13.99/year</strong></div>
+          <p>One simple plan. Renews yearly until canceled.</p>
+        </div>
+
+        <section class="safari-presence" aria-labelledby="safari-presence-title">
+          <p class="section-label">After installation</p>
+          <h2 id="safari-presence-title">Where Mark lives in Safari</h2>
+          <p class="presence-intro">Mark uses Safari's native extension placement. On Mac it can live directly in the toolbar. On iPhone and iPad it appears as a named action in Safari's Page or More menu.</p>
+
+          <div class="presence-grid">
+            <figure class="presence-card presence-mac">
+              <div class="safari-window" aria-label="Mark in the Safari toolbar on Mac">
+                <div class="mac-toolbar">
+                  <span class="traffic red"></span><span class="traffic yellow"></span><span class="traffic green"></span>
+                  <button class="nav-control" type="button" aria-label="Back">‹</button>
+                  <div class="address-field"><span>your-web-app.dev</span></div>
+                  <button class="mark-toolbar-button is-active" type="button" aria-label="Mark extension active">
+                    <img src="./public/icon/toolbar/32.png?v=2" alt="" />
+                    <span>Mark</span>
+                  </button>
+                  <button class="more-control" type="button" aria-label="More">•••</button>
+                </div>
+                <div class="mac-page">
+                  <strong>Review the live page.</strong>
+                  <span class="demo-highlight">Feedback stays in context.</span>
+                  <div class="demo-palette"><img src="./public/icon/mark.svg" alt="" /><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <figcaption><strong>Mac</strong><span>Click the Mark toolbar button to show or hide the palette.</span></figcaption>
+            </figure>
+
+            <figure class="presence-card presence-ipad">
+              <div class="ipad-safari" aria-label="Mark in the Safari Page menu on iPad">
+                <div class="touch-toolbar">
+                  <button type="button" aria-label="Page menu">▤</button>
+                  <div class="touch-address">your-web-app.dev</div>
+                  <button type="button" aria-label="Tabs">▢</button>
+                </div>
+                <div class="page-menu page-menu-ipad">
+                  <div class="menu-row mark-row"><img src="./public/icon/32.png" alt="" /><strong>Mark</strong><span>›</span></div>
+                  <div class="menu-row"><i>Aa</i><span>Website Settings</span></div>
+                  <div class="menu-row"><i>□</i><span>Request Desktop Website</span></div>
+                </div>
+              </div>
+              <figcaption><strong>iPad</strong><span>Open Safari's Page or More menu and tap Mark.</span></figcaption>
+            </figure>
+
+            <figure class="presence-card presence-iphone">
+              <div class="iphone-safari" aria-label="Mark in the Safari Page menu on iPhone">
+                <div class="phone-page"><b>Website review</b><span></span><span></span><span></span></div>
+                <div class="page-menu page-menu-phone">
+                  <div class="menu-handle"></div>
+                  <div class="menu-row mark-row"><img src="./public/icon/32.png" alt="" /><strong>Mark</strong><span>›</span></div>
+                  <div class="menu-row"><i>Aa</i><span>Website Settings</span></div>
+                </div>
+                <div class="phone-toolbar"><button type="button" aria-label="Page menu">▤</button><span>your-web-app.dev</span><button type="button" aria-label="Reload">↻</button></div>
+              </div>
+              <figcaption><strong>iPhone</strong><span>Mark stays one tap away in Safari's More menu.</span></figcaption>
+            </figure>
+          </div>
+
+          <p class="system-note">Safari controls the exact surrounding buttons and placement, which can vary by device, window size, toolbar layout, and OS version.</p>
+        </section>
+
+        <div class="screenshots" aria-label="Proposed App Store screenshots">
+          <article class="shot shot-highlight">
+            <header><span>01</span><h2>Mark the exact thing.</h2><p>Highlight feedback directly on the live page.</p></header>
+            <div class="shot-canvas">
+              <div class="browser-mini"><i></i><i></i><i></i><b>your-web-app.dev</b></div>
+              <div class="page-copy"><strong>Review what is real.</strong><p>Keep the page, the breakpoint, and the feedback together.</p><mark>the feedback together.</mark></div>
+              <div class="palette-mini"><img src="./public/icon/mark.svg" alt="" /><span></span><span></span><span></span><span></span></div>
+            </div>
+          </article>
+          <article class="shot shot-tools">
+            <header><span>02</span><h2>Four tools. Full context.</h2><p>Highlight, outline, draw, and note without leaving Safari.</p></header>
+            <div class="tool-showcase">
+              <div class="tool-swatch swatch-highlight"><b>Highlight</b><i></i></div>
+              <div class="tool-swatch swatch-outline"><b>Outline</b><i></i></div>
+              <div class="tool-swatch swatch-draw"><b>Draw</b><i></i></div>
+              <div class="tool-swatch swatch-note"><b>Note</b><i>Move this closer.</i></div>
+            </div>
+          </article>
+          <article class="shot shot-library">
+            <header><span>03</span><h2>Save the whole review.</h2><p>A visual library that stays organized and under your control.</p></header>
+            <div class="library-mini">
+              <div class="library-head"><strong>Library</strong><span>12 saves</span></div>
+              <div class="folder-row"><b>All</b><b>Launch</b><b>QA</b><b>+</b></div>
+              <div class="thumb-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </article>
+          <article class="shot shot-devices">
+            <header><span>04</span><h2>Made for every screen.</h2><p>A movable palette on Mac, iPad, and iPhone.</p></header>
+            <div class="device-family"><i class="mac"></i><i class="ipad"></i><i class="iphone"></i></div>
+          </article>
+        </div>
+
+        <section class="about" aria-labelledby="about-title">
+          <p class="section-label">About this app</p>
+          <h2 id="about-title">See it. Mark it. Ship it.</h2>
+          <p>Mark is the visual feedback companion for Safari. Highlight copy, draw a clear marker line, outline the exact region, and leave a movable note beside the thing that needs attention. Then save the page and its annotations as one organized image.</p>
+          <p>Built for designers, developers, QA teams, and vibe coders working across live websites, local builds, SaaS products, and AI-generated experiences.</p>
+        </section>
+
+        <section class="privacy-card" aria-labelledby="privacy-title">
+          <div><span aria-hidden="true">✓</span><div><p class="section-label">App Privacy</p><h2 id="privacy-title">Data Not Collected</h2></div></div>
+          <p>The developer does not collect any data from this app. Your annotations stay on your device or in the storage location you choose.</p>
+        </section>
+
+        <section class="information" aria-labelledby="info-title">
+          <h2 id="info-title">Information</h2>
+          <dl>
+            <div><dt>Seller</dt><dd>spartadata</dd></div>
+            <div><dt>Category</dt><dd>Productivity</dd></div>
+            <div><dt>Compatibility</dt><dd>iPhone, iPad, and Mac</dd></div>
+            <div><dt>Languages</dt><dd>English</dd></div>
+            <div><dt>In-App Purchases</dt><dd>Mark Yearly · $13.99</dd></div>
+          </dl>
+        </section>
+
+        <section class="submission-images" aria-labelledby="submission-images-title">
+          <p class="section-label">App Store Connect</p>
+          <h2 id="submission-images-title">Submission image requirements</h2>
+          <p>Apple accepts 1–10 screenshots per device family. Screenshots must be JPEG, JPG, or PNG without transparency.</p>
+          <div class="submission-grid">
+            <div><strong>iPhone</strong><span>1320 × 2868 px</span><small>6.9-inch portrait</small></div>
+            <div><strong>iPad</strong><span>2064 × 2752 px</span><small>13-inch portrait</small></div>
+            <div><strong>Mac</strong><span>2880 × 1800 px</span><small>16:10 landscape</small></div>
+          </div>
+        </section>
+
+        <section class="icon-package" aria-labelledby="icon-package-title">
+          <p class="section-label">Production package · not shown on the public listing</p>
+          <h2 id="icon-package-title">App icon lineup</h2>
+          <p>One recognizable Mark symbol, prepared for every current Apple appearance and Mac icon size.</p>
+          <div class="icon-grid">
+            <figure class="icon-light"><img src="./app-icons/universal-icon-1024@1x.png" alt="Mark default app icon" /><figcaption><strong>Default</strong><span>iPhone · iPad</span></figcaption></figure>
+            <figure class="icon-dark"><img src="./app-icons/universal-icon-dark-1024@1x.png" alt="Mark dark app icon" /><figcaption><strong>Dark</strong><span>iPhone · iPad</span></figcaption></figure>
+            <figure class="icon-tinted"><img src="./app-icons/universal-icon-tinted-1024@1x.png" alt="Mark tinted app icon" /><figcaption><strong>Tinted</strong><span>iPhone · iPad</span></figcaption></figure>
+            <figure class="icon-mac"><img src="./app-icons/mac-icon-512@2x.png" alt="Mark macOS app icon" /><figcaption><strong>macOS</strong><span>16–1024 px</span></figcaption></figure>
+          </div>
+          <div class="safari-icon-spec">
+            <div class="spec-copy"><strong>Safari extension icon</strong><span>Full Mark tile for extension lists: 48, 64, 96, 128, 256, and 512 px.</span></div>
+            <div class="spec-icons extension-sizes"><img src="./public/icon/48.png" alt="Mark extension icon at 48 pixels" /><img src="./public/icon/96.png" alt="Mark extension icon at 96 pixels" /><img src="./public/icon/128.png" alt="Mark extension icon at 128 pixels" /></div>
+          </div>
+          <div class="safari-icon-spec">
+            <div class="spec-copy"><strong>Safari toolbar icon</strong><span>Compact transparent Mark glyph: 16, 19, 32, and 38 px.</span></div>
+            <div class="spec-icons toolbar-sizes"><span><img src="./public/icon/toolbar/16.png?v=2" alt="Mark toolbar icon at 16 pixels" /></span><span><img src="./public/icon/toolbar/19.png?v=2" alt="Mark toolbar icon at 19 pixels" /></span><span><img src="./public/icon/toolbar/32.png?v=2" alt="Mark toolbar icon at 32 pixels" /></span><span><img src="./public/icon/toolbar/38.png?v=2" alt="Mark toolbar icon at 38 pixels" /></span></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer><p>Concept preview for App Store Connect preparation. Final pricing and availability are confirmed by Apple at purchase.</p></footer>
+    <script>
+      const themeButton = document.querySelector('[data-theme]');
+      let darkAppearance = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      themeButton.addEventListener('click', () => {
+        darkAppearance = !darkAppearance;
+        document.documentElement.classList.toggle('force-dark', darkAppearance);
+        document.documentElement.classList.toggle('force-light', !darkAppearance);
+        themeButton.setAttribute('aria-label', `Switch to ${darkAppearance ? 'light' : 'dark'} appearance`);
+      });
+    </script>
+  </body>
+</html>

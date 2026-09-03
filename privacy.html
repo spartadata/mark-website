@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Privacy policy for Mark, the Safari annotation extension."
+    />
+    <title>Privacy Policy | Mark</title>
+    <link rel="icon" href="./public/icon/32.png" sizes="32x32" />
+    <link rel="stylesheet" href="./styles.css?v=9" />
+    <style>
+      .privacy-page {
+        min-height: 100svh;
+        padding: max(24px, env(safe-area-inset-top)) var(--page-pad)
+          max(48px, env(safe-area-inset-bottom));
+      }
+
+      .privacy-nav,
+      .privacy-document {
+        width: min(100%, 760px);
+        margin-inline: auto;
+      }
+
+      .privacy-nav {
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .privacy-nav .brand {
+        flex: 0 0 auto;
+      }
+
+      .back-link {
+        min-height: 44px;
+        padding: 0 14px;
+        border-radius: 22px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 680;
+        text-decoration: none;
+        transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+      }
+
+      .back-link:hover,
+      .back-link:focus-visible {
+        color: var(--ink);
+        background: color-mix(in srgb, var(--surface-soft) 76%, transparent);
+      }
+
+      .back-link:active {
+        transform: scale(0.97);
+      }
+
+      .privacy-document {
+        padding-top: clamp(72px, 11vw, 124px);
+      }
+
+      .privacy-document header {
+        padding-bottom: clamp(44px, 7vw, 72px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .privacy-document h1 {
+        max-width: 680px;
+        margin: 0;
+        font-size: clamp(48px, 9vw, 82px);
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .privacy-summary {
+        max-width: 690px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(19px, 3vw, 24px);
+        line-height: 1.5;
+      }
+
+      .updated {
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .policy-section {
+        padding: 36px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .policy-section h2 {
+        margin: 0 0 12px;
+        font-size: clamp(23px, 4vw, 30px);
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      .policy-section p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .policy-section p + p {
+        margin-top: 14px;
+      }
+
+      .privacy-footer {
+        padding-top: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 520px) {
+        .privacy-page {
+          padding-left: max(18px, env(safe-area-inset-left));
+          padding-right: max(18px, env(safe-area-inset-right));
+        }
+
+        .privacy-document {
+          padding-top: 58px;
+        }
+
+        .privacy-footer {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .back-link {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#policy">Skip to privacy policy</a>
+
+    <main class="privacy-page" id="policy">
+      <nav class="privacy-nav" aria-label="Privacy page navigation">
+        <a class="brand" href="./index.html" aria-label="Mark home">
+          <img src="./public/icon/mark.svg" alt="" width="34" height="34" />
+          <span>Mark</span>
+        </a>
+        <a class="back-link" href="./index.html"><span aria-hidden="true">&#8592;</span> Back to Mark</a>
+      </nav>
+
+      <article class="privacy-document">
+        <header>
+          <p class="eyebrow">Privacy at Mark</p>
+          <h1>Privacy Policy</h1>
+          <p class="privacy-summary">
+            Mark does not collect your personal data or send your work to us. Your annotations stay under your control.
+          </p>
+          <p class="updated">Last updated September 2, 2026</p>
+        </header>
+
+        <section class="policy-section" aria-labelledby="data-heading">
+          <h2 id="data-heading">No data collection or tracking</h2>
+          <p>
+            Mark does not collect personal information, browsing history, page content, annotations, or saved files. Mark does not use advertising trackers or sell or share data with third parties.
+          </p>
+        </section>
+
+        <section class="policy-section" aria-labelledby="access-heading">
+          <h2 id="access-heading">Access stays in context</h2>
+          <p>
+            Mark uses access to the webpage in Safari only to let you annotate what is on screen. Mark does not send that webpage content to us or use it to build a profile about you.
+          </p>
+        </section>
+
+        <section class="policy-section" aria-labelledby="storage-heading">
+          <h2 id="storage-heading">You control your files</h2>
+          <p>
+            Annotations and files remain on your device or in storage you choose, such as a local folder or iCloud Drive. You decide when to save, move, export, sync, share, or delete them.
+          </p>
+          <p>
+            If you choose a cloud or sharing service, that service handles the file under its own privacy terms.
+          </p>
+        </section>
+
+        <section class="policy-section" aria-labelledby="purchase-heading">
+          <h2 id="purchase-heading">Purchases</h2>
+          <p>
+            If Mark offers an App Store purchase, subscription, or free trial, Apple handles the transaction. Mark does not process your payment information. Apple&rsquo;s terms and privacy policy apply to that transaction.
+          </p>
+        </section>
+
+        <section class="policy-section" aria-labelledby="changes-heading">
+          <h2 id="changes-heading">Policy updates</h2>
+          <p>
+            This policy may be updated as Mark develops. Any revised version will be posted here with a new update date.
+          </p>
+        </section>
+
+        <footer class="privacy-footer">
+          <a class="back-link" href="./index.html"><span aria-hidden="true">&#8592;</span> Back to Mark</a>
+          <span>&copy; <span data-year>2026</span> Mark</span>
+        </footer>
+      </article>
+    </main>
+
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("mark-marketing-theme");
+        if (["auto", "light", "dark"].includes(savedTheme)) {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch {
+        // The page remains usable with the automatic appearance setting.
+      }
+      document.querySelector("[data-year]").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
