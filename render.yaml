@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: mark-website
+    runtime: static
+    buildCommand: echo "Static website ready"
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    autoDeployTrigger: commit
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /public/*
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /app-icons/*
+        name: Cache-Control
+        value: public, max-age=604800
+    routes:
+      - type: redirect
+        source: /privacy
+        destination: /privacy.html
+      - type: redirect
+        source: /support
+        destination: /support.html
+      - type: redirect
+        source: /app-store
+        destination: /app-store.html
