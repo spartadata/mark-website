@@ -26,12 +26,12 @@ services:
         name: Cache-Control
         value: public, max-age=604800
     routes:
-      - type: redirect
+      - type: rewrite
         source: /privacy
         destination: /privacy.html
-      - type: redirect
+      - type: rewrite
         source: /support
         destination: /support.html
-      - type: redirect
+      - type: rewrite
         source: /app-store
         destination: /app-store.html

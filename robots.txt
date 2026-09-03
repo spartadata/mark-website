@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://mark-website-y5hm.onrender.com/sitemap.xml
