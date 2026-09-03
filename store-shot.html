@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Mark App Store Screenshot</title>
+    <link rel="stylesheet" href="./store-shot.css" />
+  </head>
+  <body>
+    <main class="artboard">
+      <header class="pitch">
+        <div class="brand"><img src="./public/icon/mark.svg" alt="" /><span>MARK FOR SAFARI</span></div>
+        <h1 data-title></h1>
+        <p data-subtitle></p>
+      </header>
+
+      <section class="browser" aria-label="Website being reviewed with Mark">
+        <div class="browser-bar">
+          <div class="traffic"><i></i><i></i><i></i></div>
+          <span class="address">your-web-app.dev/review</span>
+          <img src="./public/icon/toolbar/32.png" alt="Mark extension icon" />
+        </div>
+
+        <div class="web-app">
+          <nav class="site-nav" id="nav-target">
+            <b>NORTHSTAR</b>
+            <span>Launch workspace</span>
+            <button id="share-target">Share review</button>
+          </nav>
+
+          <div class="workspace">
+            <div class="intro">
+              <span id="release-target">RELEASE 4.8</span>
+              <h2 id="markup-target">Make the next release feel effortless.</h2>
+              <p id="highlight-target">Bring every decision into <span id="draw-copy-target">one focused workspace</span> so the team can move with confidence.</p>
+              <p class="support">Review the real experience, resolve the details, and ship without losing the context behind the work.</p>
+            </div>
+
+            <div class="review-grid">
+              <article class="review-card" id="outline-target">
+                <span>01</span>
+                <b>Design review</b>
+                <p>Keep visual feedback attached to the exact screen and breakpoint.</p>
+                <button id="note-target">Open review</button>
+              </article>
+              <article class="review-card" id="outline-target-2">
+                <span>02</span>
+                <b>Release confidence</b>
+                <p>Turn a scattered review into a clear, shareable record.</p>
+                <button id="note-target-2">View changes</button>
+              </article>
+            </div>
+
+            <section class="signal" id="draw-target">
+              <div><span>TEAM SIGNAL</span><b>87%</b><p>Ready for release</p></div>
+              <div class="chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </section>
+
+            <section class="dark-proof">
+              <span>CONTRAST CHECK</span>
+              <h3 id="dark-highlight-target">Readable feedback belongs on every surface.</h3>
+              <p>Mark keeps the words clear while the highlight stays visible.</p>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(location.search);
+      const platform = params.get("platform") || "iphone";
+      const scene = params.get("scene") || "highlight";
+      const copy = {
+        highlight: ["Highlight with clarity.", "Two colors. Light and dark surfaces. Always readable."],
+        outline: ["Frame the exact issue.", "Use rectangles or circles, then resize and recolor."],
+        draw: ["Draw the direction.", "Vary color and weight to make every change obvious."],
+        note: ["Keep the why beside it.", "Color-coded notes keep separate decisions attached to the work."],
+        library: ["Save the whole review.", "Real marked pages, organized and ready to share."],
+        subscription: ["One simple subscription.", "Every Mark tool free for one month, then $13.99 per year."]
+      };
+      document.body.dataset.platform = platform;
+      document.body.dataset.scene = scene;
+      document.querySelector("[data-title]").textContent = copy[scene][0];
+      document.querySelector("[data-subtitle]").textContent = copy[scene][1];
+    </script>
+  </body>
+</html>
