@@ -20,7 +20,8 @@ repo or its data.
 
 ## Layout
 
-- Pages: `index.html` (home), `app-store.html` (App Store preview),
+- Pages: `index.html` (home), `v2.html` (alternative home under review, served
+  at `/v2`, noindex, uses `v2.css` + shared `site.js`), `app-store.html` (App Store preview),
   `privacy.html`, `support.html`, `wordmarks.html` (wordmark playground),
   `demo/index.html` (annotation palette prototype).
 - Shared code: `styles.css`, `site.js`, `app-store.css`, `wordmarks.css`,
