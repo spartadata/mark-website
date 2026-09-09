@@ -2942,17 +2942,17 @@
           <div class="account-trial">
             <span class="account-kicker">See it. Mark it. Ship it faster.</span>
             <div class="account-offer">
-              <strong>1 month free</strong>
-              <span>then $13.99/year</span>
+              <strong>30 days free</strong>
+              <span>then $2.99/month or $19.99/year (US)</span>
             </div>
             <ul class="account-benefits">
               <li style="--benefit-color:#ffd84f">Unlimited website annotation</li>
-              <li style="--benefit-color:#78dfbc">Private iCloud library</li>
+              <li style="--benefit-color:#78dfbc">Save and organize captures</li>
               <li style="--benefit-color:#5aa7ff">iPhone, iPad, and Mac</li>
             </ul>
-            <button class="account-primary" type="button" id="startTrialButton">Start 1-month free trial</button>
+            <button class="account-primary" type="button" id="startTrialButton">Try Mark free for 30 days</button>
             <button class="account-secondary" type="button" id="restorePurchaseButton">Restore Purchases</button>
-            <p class="account-fine-print">Apple confirms the subscription. It renews for $13.99/year after the trial until canceled in your Apple Account.</p>
+            <p class="account-fine-print">No subscription signup or automatic charge during the 30-day evaluation. A paid monthly or yearly subscription is required afterward. Local prices are shown before purchase; subscriptions renew until canceled in your Apple Account.</p>
             <div class="account-links">
               <a href="../privacy.html" target="_blank" rel="noreferrer">Privacy</a>
               <a href="#terms" id="termsLink">Terms</a>
@@ -2960,11 +2960,11 @@
           </div>
 
           <div class="account-active">
-            <div class="account-status"><span>Mark subscription</span><strong>ACTIVE</strong></div>
+            <div class="account-status"><span>Mark evaluation preview</span><strong>ACTIVE</strong></div>
             <h3>You're ready to mark.</h3>
-            <p>Your tools and private library are available across your signed-in Apple devices.</p>
-            <div class="account-detail"><div><b>Annual plan</b>$13.99 per year</div><span>Renews yearly</span></div>
-            <div class="account-detail"><div><b>iCloud library</b>Private and synced</div><span>On</span></div>
+            <p>This website preview does not start a subscription. In the app, try every tool for 30 days without signing up.</p>
+            <div class="account-detail"><div><b>After 30 days</b>$2.99/month or $19.99/year (US)</div><span>Paid access</span></div>
+            <div class="account-detail"><div><b>Saved captures</b>Remain accessible after evaluation</div><span>Included</span></div>
             <div class="account-links">
               <a href="../privacy.html" target="_blank" rel="noreferrer">Privacy</a>
               <a href="#terms">Terms</a>
@@ -5011,13 +5011,13 @@
     startTrialButton.addEventListener("click", () => {
       if (startTrialButton.classList.contains("is-loading")) return;
       startTrialButton.classList.add("is-loading");
-      startTrialButton.textContent = "Confirming with Apple...";
+      startTrialButton.textContent = "Opening preview...";
       window.setTimeout(() => {
         demoSubscribed = true;
         paletteAccount.classList.add("is-subscribed");
-        paletteToolStatus.textContent = "Subscription active - opening tools";
+        paletteToolStatus.textContent = "Evaluation preview - opening tools";
         startTrialButton.classList.remove("is-loading");
-        startTrialButton.textContent = "Start 1-month free trial";
+        startTrialButton.textContent = "Try Mark free for 30 days";
         showToast("Mark is ready");
         window.setTimeout(() => setAccountOpen(false), 650);
       }, 1050);

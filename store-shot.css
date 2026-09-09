@@ -14,6 +14,8 @@ body[data-scene="note"] { background: #78dfbc; }
 body[data-scene="library"] { background: #ff7d63; }
 body[data-scene="subscription"] { background: #a991ff; }
 button { font: inherit; }
+.purchase-disclosure { position: fixed; z-index: 10; inset: 0 0 auto; padding: 8px 16px; background: #17222c; color: #fff; font-size: 18px; font-weight: 650; line-height: 1.25; text-align: center; }
+body[data-platform="iphone"] .purchase-disclosure { font-size: 14px; }
 
 .artboard { position: relative; width: 100%; height: 100%; overflow: hidden; }
 .pitch { position: absolute; z-index: 1; }
