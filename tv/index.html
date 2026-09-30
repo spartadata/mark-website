@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitcoin Ticker · Apple TV</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* The Apple TV board and Radio mode, in a browser. Drawn at 1920×1080 and scaled to the window. */
+:root{--bg:#0b0e13;--surface:#12161e;--line:#222835;--line2:#2c3341;--ink:#e8edf5;--muted:#949cab;--faint:#666e7c;--green:#35d59b;--amber:#e0a83b;--orange:#f7931a;--red:#d98a8a;--hover:#1b2029}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:#000;color:var(--ink);font-family:Archivo,-apple-system,system-ui,sans-serif;overflow:hidden}
+.mono{font-family:'JetBrains Mono',monospace}
+#stage{position:fixed;inset:0;display:grid;place-items:center}
+#tv{width:1920px;height:1080px;transform-origin:center;background:var(--bg);position:relative;overflow:hidden;border-radius:6px}
+.lab{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:500}
+/* top bar */
+.top{position:absolute;left:60px;right:60px;top:40px;height:64px;display:flex;align-items:center;gap:28px}
+.top .mark{width:44px;height:44px;border-radius:12px;background:var(--orange);display:grid;place-items:center;color:#1a0d00;font-weight:800;font-size:26px}
+.top .name{font-size:24px;font-weight:700}
+.top .live{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--green)}.top .live::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.top .clock{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:24px;color:var(--muted);font-variant-numeric:tabular-nums}
+.top .key{height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font:600 16px Archivo,sans-serif;display:flex;align-items:center;gap:10px;cursor:pointer}
+.top .key.on{color:var(--ink);background:var(--hover)}
+/* board */
+.board{position:absolute;left:60px;right:60px;top:130px;bottom:140px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:22px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px 32px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;overflow:hidden}
+.tile.hero{grid-column:span 2;grid-row:span 2}
+.tile .v{font-size:52px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1;margin-top:10px}
+.tile.hero .v{font-size:150px;letter-spacing:-.04em}
+.tile .s{font-size:20px;color:var(--muted);margin-top:14px}
+.tile .up{color:var(--green)}.tile .down{color:var(--red)}
+.tile .bar{height:12px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:16px}.tile .bar b{display:block;height:100%;background:var(--orange);width:0;transition:width .6s}
+.spark{width:100%;height:140px;margin-top:18px}
+/* on-air strip */
+.strip{position:absolute;left:60px;right:60px;bottom:40px;height:76px;border-radius:20px;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;gap:22px;padding:0 24px 0 20px;cursor:pointer}
+.strip .art{width:44px;height:44px;border-radius:12px;background:var(--orange);display:grid;place-items:center;color:#1a0d00;font-weight:800;font-size:22px}
+.strip .who{font-size:20px;font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.strip .what{color:var(--muted);font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
+.meter{display:flex;gap:3px;align-items:flex-end;height:28px}.meter i{width:4px;background:var(--green);height:3px;border-radius:2px;transition:height .06s}
+.strip .cta{color:var(--green);font-weight:600;font-size:18px;white-space:nowrap}
+/* radio mode */
+#radio{position:absolute;inset:0;display:none;grid-template-columns:300px 1fr 360px;gap:36px;padding:110px 60px 60px}
+#radio.on{display:grid}
+.col{display:flex;flex-direction:column;gap:12px;min-width:0}
+.stn{height:72px;border-radius:16px;border:1px solid var(--line2);background:var(--surface);display:flex;align-items:center;gap:14px;padding:0 20px;font-size:22px;font-weight:600;color:var(--muted);cursor:pointer}
+.stn.on{color:var(--ink);background:var(--hover);border-color:var(--green)}.stn .pro{margin-left:auto;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--amber);border:1px solid var(--amber);border-radius:6px;padding:3px 7px}
+.stn .dot{width:10px;height:10px;border-radius:50%;background:var(--faint)}.stn.on .dot{background:var(--green);box-shadow:0 0 8px var(--green)}
+.now{display:flex;flex-direction:column;justify-content:center;gap:22px;min-width:0}
+.now .kind{font-size:18px;color:var(--green);letter-spacing:.14em}
+.now h1{font-size:54px;margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
+.words{font-size:30px;line-height:1.35;color:var(--muted);max-height:290px;overflow:hidden}
+.words b{color:var(--ink);font-weight:500}
+.figs{display:flex;gap:44px;margin-top:8px}.figs div{display:flex;flex-direction:column;gap:6px}.figs .n{font:700 30px 'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.prog{height:6px;border-radius:3px;background:var(--line);overflow:hidden}.prog b{display:block;height:100%;width:0;background:var(--green)}
+.tp{display:flex;gap:18px;align-items:center}
+.tp button{height:72px;min-width:72px;padding:0 24px;border-radius:18px;border:1px solid var(--line2);background:var(--surface);color:var(--ink);font:600 22px Archivo,sans-serif;cursor:pointer}
+.tp button.pri{background:var(--green);color:#062217;border-color:var(--green)}
+.tp .mute[aria-pressed=true]{color:var(--amber);border-color:var(--amber)}
+.nextl .lab{margin-bottom:6px}
+.nx{display:flex;gap:14px;align-items:center;height:58px;border-bottom:1px solid var(--line);font-size:20px;min-width:0}
+.nx .k{font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--faint);width:120px;flex:none;text-transform:uppercase}
+.nx .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.hostcard{margin-top:auto;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:18px;line-height:1.5}
+.hostcard b{color:var(--ink)}
+.hint{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#4a5261;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div id="stage"><div id="tv">
+  <div class="top">
+    <div class="mark">₿</div><div class="name">Bitcoin Ticker</div><div class="live">Live</div>
+    <button class="key" id="kRadio">📻 <span id="kRadioT">Radio mode</span></button>
+    <div class="clock" id="clock">—</div>
+  </div>
+
+  <div class="board" id="board">
+    <div class="tile hero"><div><div class="lab">Bitcoin · BTC/USD</div><div class="v" id="px">—</div><div class="s"><span id="chg">—</span> <span id="chgs" style="color:var(--faint)">24 h</span></div></div><svg class="spark" id="spark" viewBox="0 0 800 140" preserveAspectRatio="none"></svg><div class="s mono" id="pxsrc" style="font-size:16px;color:var(--faint)">Coinbase spot</div></div>
+    <div class="tile"><div class="lab">Block height</div><div><div class="v" id="height">—</div><div class="s" id="blockAge">—</div></div></div>
+    <div class="tile"><div class="lab">Fast fee</div><div><div class="v"><span id="fee">—</span> <span style="font-size:22px;color:var(--muted)">sat/vB</span></div><div class="s" id="fees2">—</div></div></div>
+    <div class="tile"><div class="lab">Hashrate</div><div><div class="v"><span id="hash">—</span> <span style="font-size:22px;color:var(--muted)">EH/s</span></div><div class="s" id="hash2">3-day average</div></div></div>
+    <div class="tile"><div class="lab">Difficulty</div><div><div class="v" id="diff">—</div><div class="s" id="diff2">—</div><div class="bar"><b id="diffbar"></b></div></div></div>
+    <div class="tile"><div class="lab">Halving</div><div><div class="v" id="halv">—</div><div class="s" id="halv2">blocks to go</div><div class="bar"><b id="halvbar"></b></div></div></div>
+    <div class="tile"><div class="lab">Mempool</div><div><div class="v" id="mem">—</div><div class="s" id="mem2">transactions waiting</div></div></div>
+    <div class="tile"><div class="lab">Sats per dollar</div><div><div class="v" id="spd">—</div><div class="s">what a dollar buys</div></div></div>
+    <div class="tile"><div class="lab">Market cap</div><div><div class="v" id="cap">—</div><div class="s" id="cap2">—</div></div></div>
+  </div>
+
+  <div class="strip" id="strip">
+    <div class="art">₿</div>
+    <div class="who" id="sWho">Bitcoin Radio · The Wire</div>
+    <div class="what" id="sWhat">Press play for the broadcast</div>
+    <div class="meter" id="sMeter"></div>
+    <div class="cta" id="sCta">▶ Play</div>
+  </div>
+
+  <div id="radio">
+    <div class="col" id="stations"></div>
+    <div class="now">
+      <div class="lab kind" id="rKind">ON AIR</div>
+      <h1 id="rTitle">Bitcoin Radio</h1>
+      <div class="words" id="rWords">The station sting, then the host. Press play.</div>
+      <div class="figs"><div><span class="lab">Bitcoin</span><span class="n" id="fPx">—</span></div><div><span class="lab">Block</span><span class="n" id="fBlock">—</span></div><div><span class="lab">Fast fee</span><span class="n" id="fFee">—</span></div><div><span class="lab">Host</span><span class="n" id="fHost">—</span></div></div>
+      <div class="prog"><b id="rProg"></b></div>
+      <div class="tp"><button class="pri" id="bPlay">▶ Play</button><button id="bSkip">▶▶ Skip</button><button class="mute" id="bMute" aria-pressed="false">Mute</button><div class="meter" id="rMeter" style="margin-left:auto;height:40px"></div></div>
+    </div>
+    <div class="col nextl"><div class="lab">Up next</div><div id="next"></div><div class="hostcard" id="hostcard"></div></div>
+  </div>
+</div></div>
+<div class="hint">space play · → skip · R radio mode · 1–4 stations · M mute</div>
+
+<script>
+(function(){
+  const API = 'https://bitcointicker-radio.yellow-glade-3f5f.workers.dev';
+  const $ = (id)=>document.getElementById(id);
+  const esc = (v)=>String(v??'').replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const KIND = {brief:'NEWS BRIEF',network:'THE NETWORK',magazine:'MINING GUIDE',song:'MUSIC',ad:'A WORD FROM',breaking:'BREAKING',ident:'ON AIR',price:'THE PRICE',intro:'WELCOME',songintro:'INTRODUCING',beat:'BETWEEN',jingle:'STATION STING',transition:'TRANSITION',time:'TIME CHECK',take:'THE HOST',history:'THIS DAY IN BITCOIN',promo:'FROM THE STATION'};
+  const S = { station: localStorage.getItem('tv.station')||'wire',
+    listener: localStorage.getItem('tv.listener') || (localStorage.setItem('tv.listener','tv-'+Math.random().toString(36).slice(2,10)), localStorage.getItem('tv.listener')),
+    playing:false, fresh:true, session: Math.random().toString(36).slice(2,10), talk:0, queue:[], cur:null, audio:null, ctx:null, an:null, data:null, heard:[], stations:[], hosts:[], hostUntil:0, qHost:'', pos:0, dur:0, muted:false, radio:false,
+    fig:{price:null, chg:null, height:null, fee:null, blockAt:null} };
+
+  // ---------- scale the 1920×1080 canvas to the window
+  function fit(){ const sc=Math.min(innerWidth/1920, innerHeight/1080); $('tv').style.transform='scale('+sc+')'; }
+  addEventListener('resize', fit); fit();
+
+  // ---------- the board: live figures from public sources (no keys, no server)
+  const fmtUSD = (n)=> '$'+Math.round(n).toLocaleString('en-US');
+  const big = (n, d=1)=> n>=1e12? (n/1e12).toFixed(d)+' T' : n>=1e9? (n/1e9).toFixed(d)+' B' : n>=1e6? (n/1e6).toFixed(d)+' M' : Math.round(n).toLocaleString('en-US');
+  const hist=[];
+  (async()=>{ try{ const c=await (await fetch('https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=900')).json(); c.slice(0,96).reverse().forEach(k=>hist.push(k[4])); spark(); }catch(e){} })();
+  async function price(){
+    try{ const r=await (await fetch('https://api.coinbase.com/v2/prices/BTC-USD/spot')).json(); const p=Number(r.data.amount); S.fig.price=p; $('px').textContent=fmtUSD(p); $('fPx').textContent=fmtUSD(p); $('spd').textContent=Math.round(1e8/p).toLocaleString('en-US'); hist.push(p); if (hist.length>240) hist.shift(); spark(); }catch(e){}
+    try{ const r=await (await fetch('https://api.coinbase.com/v2/prices/BTC-USD/spot?date='+new Date(Date.now()-864e5).toISOString().slice(0,10))).json(); const y=Number(r.data.amount); if (y && S.fig.price){ const c=(S.fig.price-y)/y*100; S.fig.chg=c; const e=$('chg'); e.textContent=(c>=0?'▲ +':'▼ ')+c.toFixed(2)+'% · '+(c>=0?'+':'−')+fmtUSD(Math.abs(S.fig.price-y)); e.className=c>=0?'up':'down'; } }catch(e){}
+  }
+  function spark(){ const svg=$('spark'); if (hist.length<2) return; const lo=Math.min(...hist), hi=Math.max(...hist), rng=(hi-lo)||1; const pts=hist.map((p,i)=>[(i/(hist.length-1))*800, 130-((p-lo)/rng)*120]); const d='M'+pts.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L'); svg.innerHTML='<path d="'+d+' L800 140 L0 140 Z" fill="rgba(247,147,26,.12)"/><path d="'+d+'" fill="none" stroke="#f7931a" stroke-width="3" stroke-linejoin="round"/><circle cx="'+pts[pts.length-1][0].toFixed(1)+'" cy="'+pts[pts.length-1][1].toFixed(1)+'" r="6" fill="#f7931a"/>'; }
+  async function chain(){
+    try{ const h=Number(await (await fetch('https://mempool.space/api/blocks/tip/height')).text()); S.fig.height=h; $('height').textContent=h.toLocaleString('en-US'); $('fBlock').textContent=h.toLocaleString('en-US');
+      const toHalv=1050000-h; $('halv').textContent=toHalv.toLocaleString('en-US'); $('halvbar').style.width=((210000-toHalv)/210000*100).toFixed(1)+'%'; $('halv2').textContent='blocks to go · about '+Math.round(toHalv*10/60/24)+' days';
+      const blocks=await (await fetch('https://mempool.space/api/v1/blocks/'+h)).json(); if (blocks[0]) { S.fig.blockAt=blocks[0].timestamp; blockAge(); } }catch(e){}
+    try{ const f=await (await fetch('https://mempool.space/api/v1/fees/recommended')).json(); S.fig.fee=f.fastestFee; $('fee').textContent=f.fastestFee; $('fFee').textContent=f.fastestFee+' sat/vB'; $('fees2').textContent='half hour '+f.halfHourFee+' · hour '+f.hourFee+' · low '+f.economyFee; }catch(e){}
+    try{ const m=await (await fetch('https://mempool.space/api/mempool')).json(); $('mem').textContent=m.count.toLocaleString('en-US'); $('mem2').textContent='transactions waiting · '+(m.vsize/1e6).toFixed(1)+' MvB'; }catch(e){}
+    try{ const d=await (await fetch('https://mempool.space/api/v1/difficulty-adjustment')).json(); $('diff2').textContent=(d.difficultyChange>=0?'+':'')+d.difficultyChange.toFixed(2)+'% expected · '+d.remainingBlocks+' blocks to retarget'; $('diffbar').style.width=d.progressPercent.toFixed(1)+'%'; }catch(e){}
+    try{ const hr=await (await fetch('https://mempool.space/api/v1/mining/hashrate/3d')).json(); $('hash').textContent=(hr.currentHashrate/1e18).toFixed(0); $('diff').textContent=big(hr.currentDifficulty,2); }catch(e){}
+    try{ if (S.fig.price){ const supply=await (await fetch('https://blockchain.info/q/totalbc?cors=true')).text(); const btc=Number(supply)/1e8; if (btc>0){ $('cap').textContent='$'+big(btc*S.fig.price,2); $('cap2').textContent=btc.toLocaleString('en-US',{maximumFractionDigits:0})+' BTC in circulation'; } } }catch(e){}
+  }
+  function blockAge(){ if (!S.fig.blockAt) return; const s=Math.max(0,Math.floor(Date.now()/1000-S.fig.blockAt)); $('blockAge').textContent='last block '+(s<60? s+' s' : Math.floor(s/60)+' min '+(s%60)+' s')+' ago'; }
+  function clock(){ $('clock').textContent=new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}); }
+  price(); chain(); clock(); setInterval(price, 15000); setInterval(chain, 30000); setInterval(blockAge, 1000); setInterval(clock, 10000);
+
+  // ---------- the radio (the same engine as the app: intro sting, host opener under it, gapless reads)
+  const stationName=(id)=> (S.stations.find(s=>s.id===id)||{}).name||id;
+  const isProStation=(id)=> id!=='wire';
+  async function loadStations(){ const d=await (await fetch(API+'/v1/radio/stations')).json(); S.stations=d.stations; S.hosts=d.hosts; render(); }
+  async function loadQueue(){ const d=await (await fetch(API+'/v1/radio/'+S.station+'/playlist?listener='+S.listener+'&count=12&session='+S.session+'&talk='+Math.round(S.talk)+'&tz='+encodeURIComponent(Intl.DateTimeFormat().resolvedOptions().timeZone||'America/New_York')+'&skip='+encodeURIComponent(S.queue.map(x=>x.id).slice(0,40).join(',')))).json(); const have=new Set(S.queue.map(x=>x.id).concat(S.heard, S.cur?[S.cur.id]:[])); S.queue=S.queue.concat(d.segments.filter(x=>!have.has(x.id))); S.qHost=d.host.id; S.hostUntil=d.hostUntil; preloadAhead(); render(); }
+  function ensureAudio(){ if (S.ctx) return; S.ctx=new (window.AudioContext||window.webkitAudioContext)(); S.an=S.ctx.createAnalyser(); S.an.fftSize=256; S.data=new Uint8Array(S.an.frequencyBinCount); S.gain=S.ctx.createGain(); S.an.connect(S.gain); S.gain.connect(S.ctx.destination); meters(); }
+  const PRE=new Map();
+  function preload(seg){ if (!seg||PRE.has(seg.id)) return; const a=new Audio(API+seg.audio); a.crossOrigin='anonymous'; a.preload='auto'; a.load(); PRE.set(seg.id,a); if (PRE.size>6) PRE.delete(PRE.keys().next().value); }
+  function preloadAhead(){ S.queue.slice(0,2).forEach(preload); }
+  async function playIntro(){ try{ const seg=await (await fetch(API+'/v1/radio/'+S.station+'/intro?listener='+S.listener)).json(); if (seg&&seg.audio){ S.queue.unshift(seg); if (seg.before&&seg.before.audio) S.bed=API+seg.before.audio; preloadAhead(); } }catch(e){} }
+  async function playNext(){
+    if (S.fresh){ S.fresh=false; await playIntro(); }
+    if (!S.queue.length){ await loadQueue(); if (!S.queue.length){ $('rWords').textContent='Nothing to play yet. Try again in a minute.'; return; } }
+    const seg=S.queue.shift(); S.cur=seg; S.pos=0; S.dur=seg.duration||0; ensureAudio();
+    if (S.audio){ try{S.audio.pause();}catch(e){} }
+    let a=PRE.get(seg.id); PRE.delete(seg.id); if (!a){ a=new Audio(API+seg.audio); a.crossOrigin='anonymous'; a.preload='auto'; }
+    S.ctx.createMediaElementSource(a).connect(S.an);
+    S.audio=a; S.playing=true;
+    a.addEventListener('timeupdate', ()=>{ S.pos=a.currentTime; if (a.duration&&isFinite(a.duration)) S.dur=a.duration; progress(); });
+    a.addEventListener('ended', ()=>{ if (seg.kind==='song') S.talk=0; else if (seg.kind!=='transition'&&seg.kind!=='jingle') S.talk+=(a.duration||S.dur||0); S.heard.push(seg.id); report([seg.id]); playNext(); if (S.queue.length<4) loadQueue(); });
+    a.addEventListener('error', ()=>{ setTimeout(playNext, 400); });
+    if (S.bed){ const u=S.bed; S.bed=null; await playBed(u,a); }
+    try{ await a.play(); }catch(e){ S.playing=false; }
+    preloadAhead(); render();
+  }
+  async function playBed(url, voice){ const bed=new Audio(url); bed.crossOrigin='anonymous'; const g=S.ctx.createGain(); g.gain.value=1; S.ctx.createMediaElementSource(bed).connect(g); g.connect(S.an); try{ await bed.play(); }catch(e){ return; } await new Promise(r=>setTimeout(r,1800)); g.gain.setTargetAtTime(0.22,S.ctx.currentTime,0.25); voice.addEventListener('ended',()=>{ g.gain.setTargetAtTime(1,S.ctx.currentTime,0.3); },{once:true}); }
+  function togglePlay(){ if (!S.audio) return playNext(); if (S.audio.paused){ S.ctx&&S.ctx.resume(); S.audio.play(); S.playing=true; } else { S.audio.pause(); S.playing=false; } render(); }
+  function skip(){ if (S.audio) S.audio.pause(); playNext(); }
+  function mute(){ S.muted=!S.muted; if (S.gain) S.gain.gain.value=S.muted?0:1; render(); }
+  async function report(ids){ try{ await fetch(API+'/v1/radio/played',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({listener:S.listener,ids})}); }catch(e){} }
+  async function setStation(id){ if (id===S.station&&S.audio) return; S.station=id; localStorage.setItem('tv.station',id); S.queue=[]; S.fresh=true; S.session=Math.random().toString(36).slice(2,10); S.talk=0; const was=S.playing||!S.audio; if (S.audio){S.audio.pause();} S.audio=null; S.cur=null; S.playing=false; PRE.clear(); await loadQueue(); if (was) playNext(); else render(); }
+
+  // ---------- meters, progress, words
+  function meters(){ const bars=[$('sMeter'),$('rMeter')]; bars.forEach(m=>{ if (!m.children.length) for (let i=0;i<18;i++) m.appendChild(document.createElement('i')); });
+    (function tick(){ requestAnimationFrame(tick); if (!S.an) return; S.an.getByteFrequencyData(S.data); bars.forEach(m=>{ const H=m.clientHeight||28; for (let i=0;i<18;i++){ const v=S.playing&&!S.muted? S.data[Math.min(S.data.length-1, 2+i*3)]/255 : 0; m.children[i].style.height=Math.max(3, v*H)+'px'; } }); })(); }
+  function progress(){ const pct=S.dur?Math.min(100,S.pos/S.dur*100):0; $('rProg').style.width=pct+'%'; words(); }
+  function words(){ const seg=S.cur; if (!seg||!seg.text) return; const w=seg.text.split(/\s+/); let at=w.length; if (seg.words&&seg.words.length===w.length){ const t=S.pos-(seg.lead??0.384); at=seg.words.findIndex(x=>x>t); if (at<0) at=w.length; } else if (S.dur) at=Math.floor(w.length*Math.min(1,S.pos/Math.max(1,S.dur))); const start=Math.max(0, at-40); $('rWords').innerHTML='<b>'+esc(w.slice(start,at).join(' '))+'</b> '+esc(w.slice(at, at+60).join(' ')); }
+  function hostName(){ return S.cur?.hostName || (S.hosts.find(h=>h.id===S.qHost)||{}).name || '—'; }
+  function render(){
+    $('stations').innerHTML=S.stations.map(s=>'<div class="stn'+(s.id===S.station?' on':'')+'" data-station="'+s.id+'"><span class="dot"></span>'+esc(s.name)+(isProStation(s.id)?'<span class="pro">PRO</span>':'')+'</div>').join('');
+    const seg=S.cur; $('rKind').textContent=seg?(KIND[seg.kind]||'ON AIR'):'ON AIR'; $('rTitle').textContent=seg?seg.title:('Bitcoin Radio · '+stationName(S.station));
+    if (seg&&!seg.text) $('rWords').textContent=seg.kind==='song'?(seg.source||'Original music'):(seg.kind==='transition'?'A moment of music.':'');
+    $('fHost').textContent=hostName();
+    $('bPlay').textContent=S.playing?'❚❚ Pause':'▶ Play'; $('bMute').setAttribute('aria-pressed',String(S.muted));
+    $('next').innerHTML=S.queue.slice(0,7).map(n=>'<div class="nx"><span class="k">'+(KIND[n.kind]||'').toLowerCase()+'</span><span class="t">'+esc(n.title)+'</span></div>').join('')||'<div class="nx"><span class="t" style="color:var(--faint)">Loading the playlist…</span></div>';
+    const until=S.hostUntil?new Date(S.hostUntil*1000).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}):'—';
+    $('hostcard').innerHTML='<b>'+esc(hostName())+'</b> is on '+esc(stationName(S.station))+' until '+until+'.';
+    $('sWho').textContent='Bitcoin Radio · '+stationName(S.station)+(seg?' · '+hostName():''); $('sWhat').textContent=seg?((KIND[seg.kind]||'')+' · '+seg.title):'Press play for the broadcast'; $('sCta').textContent=S.playing?'On air · open Radio mode':'▶ Play';
+    $('kRadioT').textContent=S.radio?'Dashboard':'Radio mode'; $('radio').classList.toggle('on',S.radio); $('board').style.visibility=S.radio?'hidden':'visible'; $('strip').style.visibility=S.radio?'hidden':'visible';
+  }
+  document.addEventListener('click',(e)=>{ const st=e.target.closest('[data-station]'); if (st) return setStation(st.dataset.station);
+    if (e.target.closest('#bPlay')) return togglePlay(); if (e.target.closest('#bSkip')) return skip(); if (e.target.closest('#bMute')) return mute();
+    if (e.target.closest('#kRadio')) { S.radio=!S.radio; return render(); }
+    if (e.target.closest('#strip')) { if (!S.audio) playNext(); S.radio=true; return render(); } });
+  document.addEventListener('keydown',(e)=>{ if (e.code==='Space'){ e.preventDefault(); togglePlay(); } else if (e.code==='ArrowRight') skip(); else if (e.key==='r'||e.key==='R'){ S.radio=!S.radio; render(); } else if (e.key==='m'||e.key==='M') mute(); else if ('1234'.includes(e.key)&&S.stations[Number(e.key)-1]) setStation(S.stations[Number(e.key)-1].id); else if (e.code==='Escape'){ S.radio=false; render(); } });
+  loadStations().then(loadQueue);
+})();
+</script>
+</body>
+</html>
