@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bitcoin Ticker — Bitcoin only, and all of Bitcoin. Mac, iPhone, Watch, TV, CarPlay.</title>
+<meta name="description" content="Bitcoin Ticker puts the price in your menu bar and everything moving it one click away: the halving, fees, difficulty, hashrate, mining economics, alerts, and Bitcoin Radio live.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0e13;--surface:#12161e;--line:#222835;--ink:#e8edf5;--muted:#949cab;--faint:#666e7c;--accent:#f7931a;--green:#35d59b;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--display:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--ui);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}
+.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:22px;padding:12px 24px;background:rgba(11,14,19,.86);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font:700 15px var(--display)}.brand i{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2a2f3a,#12161e);display:inline-grid;place-items:center;color:var(--accent);font:800 15px var(--display);border:1px solid var(--line)}
+.links{display:flex;gap:18px;margin-left:8px;font-size:14px;color:var(--muted)}.links a:hover{color:var(--ink)}.links .on{color:var(--ink)}.spacer{flex:1}
+@media (max-width:720px){.links{display:none}}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.hero{padding:72px 0 28px;text-align:center}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1{font:800 clamp(36px,6vw,66px)/1.0 var(--display);letter-spacing:-.025em;margin:14px auto 16px;max-width:14ch}
+.lede{font-size:18px;color:var(--muted);max-width:60ch;margin:0 auto 26px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font:600 14px var(--ui);border:1px solid var(--line);background:var(--surface)}.btn.primary{background:var(--accent);color:#0b0e13;border-color:transparent}
+.art{margin:36px auto 0;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.5)}.art img{display:block;width:100%;height:auto}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:40px 0}@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}.card .k{font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:10px}.card h3{font:700 17px var(--display);margin:0 0 6px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+.card.radio{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;background:linear-gradient(135deg,#151a23,#0f1319)}@media (max-width:760px){.card.radio{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--faint);font-size:13px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="./"><i>₿</i>Bitcoin Ticker</a>
+  <div class="links"><a class="on" href="./">Ticker</a><a href="./radio.html">Radio</a><a href="./radio.html#embed">Embed</a><a href="https://apps.apple.com/app/id6813288363" target="_blank" rel="noopener">App Store</a></div>
+  <div class="spacer"></div>
+  <bitcoin-radio layout="bar" theme="dark"></bitcoin-radio>
+</nav>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Bitcoin only — and all of Bitcoin</p>
+    <h1>One asset. Every screen you own.</h1>
+    <p class="lede">Every other ticker shows you a number and hides the network behind it. Bitcoin Ticker puts the price in your menu bar and everything moving it one click away: the halving countdown, live fee bands, difficulty and the next retarget, hashrate, your mining economics, alerts that fire with every device asleep — and Bitcoin Radio, live.</p>
+    <div class="cta"><a class="btn primary" href="https://apps.apple.com/app/id6813288363" target="_blank" rel="noopener">Get Bitcoin Ticker</a><a class="btn" href="./radio.html">Listen to Bitcoin Radio</a></div>
+    <div class="art"><img src="https://bitcointicker-radio.yellow-glade-3f5f.workers.dev/v1/radio/file/every-device-dark.png" alt="Bitcoin Ticker on Apple TV, CarPlay, Mac, iPad, iPhone and Apple Watch" width="2880" height="1800"></div>
+  </section>
+  <section class="grid">
+    <div class="card"><span class="k">Mac</span><h3>A menu bar that never moves.</h3><p>Width reserved from the widest price it could ever show. Venue and age on every figure; dims rather than lies when a feed drops.</p></div>
+    <div class="card"><span class="k">iPhone · iPad · Watch</span><h3>Widgets, complications, alerts.</h3><p>Home, Lock Screen and StandBy widgets, every Watch complication, a Live Activity when a target is close, alerts that wake you.</p></div>
+    <div class="card"><span class="k">Apple TV · CarPlay</span><h3>The network on the wall. The station in the car.</h3><p>Seventeen live panels on the TV; Bitcoin Radio with Now Playing art in the car.</p></div>
+    <div class="card radio">
+      <div><span class="k">Bitcoin Radio</span><h3>Live, 24/7, free to embed anywhere.</h3><p>Four hosts, the news, every block, the magazine told in full, trivia and original music. The Wire is free on every screen and on the web — <a href="./radio.html#embed" style="color:var(--accent)">one line of code</a> puts it in your site.</p></div>
+      <bitcoin-radio layout="card" theme="dark"></bitcoin-radio>
+    </div>
+  </section>
+</main>
+<footer class="wrap">Bitcoin Ticker · Spartadata LLC · <a href="./radio.html">Bitcoin Radio</a></footer>
+<script src="https://bitcointicker-radio.yellow-glade-3f5f.workers.dev/embed.js" async></script>
+</body>
+</html>

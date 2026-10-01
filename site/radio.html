@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bitcoin Radio — free live Bitcoin radio for any site, app or product</title>
+<meta name="description" content="Bitcoin Radio is a live, 24/7 Bitcoin and mining station with real hosts, news, the network and original music. Embed it anywhere, free, with one line of code.">
+<meta property="og:title" content="Bitcoin Radio — live, 24/7, free to embed">
+<meta property="og:description" content="Hosts, news, the network, trivia and original music. One line of code puts the live station in your site, app or product.">
+<meta property="og:image" content="https://bitcointicker-radio.yellow-glade-3f5f.workers.dev/v1/radio/file/every-device-dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0e13;--surface:#12161e;--line:#222835;--ink:#e8edf5;--muted:#949cab;--faint:#666e7c;--accent:#f7931a;--green:#35d59b;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--display:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--ui);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:22px;padding:12px 24px;background:rgba(11,14,19,.86);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font:700 15px var(--display);letter-spacing:.01em}
+.brand i{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2a2f3a,#12161e);display:inline-grid;place-items:center;color:var(--accent);font:800 15px var(--display);border:1px solid var(--line)}
+.links{display:flex;gap:18px;margin-left:8px;font-size:14px;color:var(--muted)}.links a:hover{color:var(--ink)}.links .on{color:var(--ink)}
+.spacer{flex:1}
+.nav bitcoin-radio{flex:none}
+@media (max-width:720px){.links{display:none}.nav{gap:12px}}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.hero{padding:64px 0 36px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+@media (max-width:900px){.hero{grid-template-columns:1fr;padding-top:40px}}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(53,213,155,.15)}
+h1{font:800 clamp(34px,5vw,58px)/1.02 var(--display);letter-spacing:-.02em;margin:14px 0 16px}
+h1 span{color:var(--accent)}
+.lede{font-size:18px;color:var(--muted);max-width:52ch;margin:0 0 24px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font:600 14px var(--ui);border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--accent);color:#0b0e13;border-color:transparent}.btn:hover{filter:brightness(1.07)}
+.heroart{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--surface);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.heroart img{display:block;width:100%;height:auto}
+.heroart .cap{position:absolute;left:14px;bottom:14px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:rgba(11,14,19,.7);padding:6px 10px;border-radius:999px;border:1px solid var(--line)}
+.cardrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:28px 0 8px}
+@media (max-width:900px){.cardrow{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card h3{font:700 16px var(--display);margin:0 0 6px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+.card .k{font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:10px}
+section{padding:40px 0}
+h2{font:700 clamp(24px,3vw,34px)/1.1 var(--display);letter-spacing:-.015em;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 22px;max-width:62ch}
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media (max-width:760px){.feat{grid-template-columns:1fr}}
+.feat div{padding:18px 20px;border-bottom:1px solid var(--line)}.feat div:nth-child(odd){border-right:1px solid var(--line)}
+@media (max-width:760px){.feat div:nth-child(odd){border-right:0}}
+.feat b{display:block;font:600 15px var(--display);margin-bottom:4px}.feat span{color:var(--muted);font-size:14px}
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media (max-width:860px){.demo{grid-template-columns:1fr}}
+.demo .card{display:flex;flex-direction:column;gap:14px;min-height:170px}
+.demo .stage{flex:1;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:18px}
+.demo .stage.light{background:#f2f3f6}
+pre{margin:0;background:#0d1119;border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow:auto;font:13px/1.55 var(--mono);color:#dfe6f2}
+pre .c{color:var(--faint)}pre .a{color:var(--accent)}pre .s{color:var(--green)}
+.snip{position:relative}.snip button{position:absolute;top:10px;right:10px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 10px;cursor:pointer}
+.snip button:hover{color:var(--ink)}
+.attrs{width:100%;border-collapse:collapse;font-size:14px}.attrs td{padding:10px 0;border-top:1px solid var(--line);vertical-align:top}.attrs td:first-child{font:500 13px var(--mono);color:var(--accent);width:150px}.attrs td:nth-child(2){width:190px;color:var(--muted);font-family:var(--mono);font-size:12.5px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--faint);font-size:13px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+footer .spacer{flex:1}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="./"><i>₿</i>Bitcoin Ticker</a>
+  <div class="links"><a href="./">Ticker</a><a class="on" href="./radio.html">Radio</a><a href="./radio.html#embed">Embed</a><a href="https://apps.apple.com/app/id6813288363" target="_blank" rel="noopener">App Store</a></div>
+  <div class="spacer"></div>
+  <bitcoin-radio layout="bar" theme="dark"></bitcoin-radio>
+</nav>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow"><i></i>Live now · The Wire · 24/7</p>
+      <h1>Bitcoin Radio.<br>Free to <span>embed anywhere.</span></h1>
+      <p class="lede">A live station about one thing: Bitcoin. Four hosts, the news as it breaks, every block as it lands, the magazine told in full, trivia, and original music. One line of code puts it in your site, app, kiosk or product. No key, no account, no cost.</p>
+      <div class="cta">
+        <a class="btn primary" href="#embed">Get the embed code</a>
+        <a class="btn" href="#features">What's on air</a>
+      </div>
+    </div>
+    <div class="heroart">
+      <img src="https://bitcointicker-radio.yellow-glade-3f5f.workers.dev/v1/radio/file/every-device-dark.png" alt="Bitcoin Ticker on Apple TV, CarPlay, Mac, iPad, iPhone and Apple Watch" width="2880" height="1800">
+      <span class="cap">One station · every Apple screen · and the web</span>
+    </div>
+  </section>
+
+  <div class="cardrow">
+    <div class="card"><span class="k">Players</span><h3>Play. Pause. Next.</h3><p>A minimal player: one button that becomes pause, a next button, and what's on air. Nothing else to learn.</p></div>
+    <div class="card"><span class="k">Free</span><h3>No key, no account, no cost.</h3><p>The Wire streams free to any site, app or product. The embed is open; the script is hosted and cached for you.</p></div>
+    <div class="card"><span class="k">Live</span><h3>Written and voiced as it happens.</h3><p>Hosts change shifts every half hour. Nothing is a loop: the station writes itself from the network, the news and the magazine, all day.</p></div>
+  </div>
+
+  <section id="features">
+    <h2>What's on air</h2>
+    <p class="sub">The Wire is the free station. Bitcoin, Mining and Music are Pro in the Bitcoin Ticker apps.</p>
+    <div class="feat">
+      <div><b>Four hosts, real shifts</b><span>Marcus, Dana, Theo and Rae: a 30-minute shift each, idents, hand-offs and the small human beats between reads.</span></div>
+      <div><b>News as it breaks</b><span>Bitcoin and mining stories written into briefs the moment they land, retold three ways so a story never sounds the same twice.</span></div>
+      <div><b>The network, live</b><span>Every block as it lands, fees, difficulty and the halving clock, read with the figures of the minute.</span></div>
+      <div><b>The Bitcoin Mining Guide, told</b><span>Every article of the magazine as a feature, placed in its time; hundreds of one-line reads behind them.</span></div>
+      <div><b>This day in Bitcoin</b><span>Dated history every day, the date spoken; Genesis Block Day, Pizza Day and the halving anniversaries celebrated on air.</span></div>
+      <div><b>Trivia every 20 minutes</b><span>A question, the sting, the answer: Bitcoin, mining and the network, never the same question twice in a day.</span></div>
+      <div><b>Original music</b><span>Songs and transitions made for the station, levelled and trimmed, a featured track to open every session.</span></div>
+      <div><b>Karaoke words</b><span>In the apps, every read is shown word by word as it is spoken; the web player keeps to the title and the host.</span></div>
+    </div>
+  </section>
+
+  <section id="embed">
+    <h2>Embed it</h2>
+    <p class="sub">Paste the script once, then place <code>&lt;bitcoin-radio&gt;</code> wherever the player should sit: a top nav, a sidebar, a footer, a kiosk screen. Every player on a page shares one stream.</p>
+    <div class="demo">
+      <div class="card"><span class="k">Nav bar · dark</span><div class="stage"><bitcoin-radio layout="bar" theme="dark"></bitcoin-radio></div></div>
+      <div class="card"><span class="k">Nav bar · light</span><div class="stage light"><bitcoin-radio layout="bar" theme="light"></bitcoin-radio></div></div>
+      <div class="card"><span class="k">Card · with meter</span><div class="stage"><bitcoin-radio layout="card" theme="dark"></bitcoin-radio></div></div>
+      <div class="card"><span class="k">Mini · your colour and label</span><div class="stage light"><bitcoin-radio layout="mini" theme="light" accent="#2e6ede"></bitcoin-radio>&nbsp;&nbsp;<bitcoin-radio layout="bar" theme="light" accent="#2e6ede" label="Mining Disrupt Radio"></bitcoin-radio></div></div>
+    </div>
+
+    <div style="height:22px"></div>
+    <div class="card">
+      <span class="k">1 · Any web page</span>
+      <div class="snip"><button data-copy="s1">Copy</button><pre id="s1"><span class="c">&lt;!-- once, anywhere in the page --&gt;</span>
+&lt;script src="<span class="a">https://bitcointicker-radio.yellow-glade-3f5f.workers.dev/embed.js</span>" async&gt;&lt;/script&gt;
+
+<span class="c">&lt;!-- the player, wherever it should sit --&gt;</span>
+&lt;bitcoin-radio&gt;&lt;/bitcoin-radio&gt;</pre></div>
+    </div>
+    <div style="height:14px"></div>
+    <div class="card">
+      <span class="k">2 · Options</span>
+      <div class="snip"><button data-copy="s2">Copy</button><pre id="s2">&lt;bitcoin-radio layout="<span class="s">bar</span>" theme="<span class="s">auto</span>" accent="<span class="s">#f7931a</span>" label="<span class="s">Bitcoin Radio</span>"&gt;&lt;/bitcoin-radio&gt;</pre></div>
+      <table class="attrs">
+        <tr><td>layout</td><td>bar · card · mini</td><td>bar is the nav pill; card adds the meter and credit; mini is the button alone.</td></tr>
+        <tr><td>theme</td><td>auto · dark · light</td><td>auto follows the visitor's system setting.</td></tr>
+        <tr><td>accent</td><td>any CSS colour</td><td>The play button and the meter. Default is Bitcoin orange.</td></tr>
+        <tr><td>label</td><td>text</td><td>The name on the pill. Default "Bitcoin Radio".</td></tr>
+      </table>
+    </div>
+    <div style="height:14px"></div>
+    <div class="card">
+      <span class="k">3 · No scripts allowed? Use the iframe</span>
+      <div class="snip"><button data-copy="s3">Copy</button><pre id="s3">&lt;iframe src="<span class="a">https://bitcointicker-radio.yellow-glade-3f5f.workers.dev/embed?layout=bar&amp;theme=dark</span>"
+        width="340" height="56" style="border:0" allow="autoplay" title="Bitcoin Radio"&gt;&lt;/iframe&gt;</pre></div>
+    </div>
+    <div style="height:14px"></div>
+    <div class="card">
+      <span class="k">4 · Your own buttons (apps, kiosks, React, anything)</span>
+      <div class="snip"><button data-copy="s4">Copy</button><pre id="s4"><span class="c">// the same engine, no UI: drive it from your own controls</span>
+BitcoinRadio.play();  BitcoinRadio.pause();  BitcoinRadio.skip();
+BitcoinRadio.on('segment', s =&gt; console.log('on air:', s.title, s.hostName));
+BitcoinRadio.state   <span class="c">// { playing, now, host, queue }</span>
+
+<span class="c">// native apps: the station is an open JSON API</span>
+GET  https://bitcointicker-radio.yellow-glade-3f5f.workers.dev/v1/radio/wire/playlist?listener=&lt;id&gt;&amp;session=&lt;nonce&gt;
+<span class="c">// each segment carries an audio URL; play them in order, POST the ids you played to /v1/radio/played</span></pre></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Part of Bitcoin Ticker</h2>
+    <p class="sub">Bitcoin Radio is built into Bitcoin Ticker for Mac, iPhone, iPad, Apple Watch, Apple TV and CarPlay. The Wire is free everywhere; Pro adds the Bitcoin, Mining and Music stations and the four looks.</p>
+    <div class="cta"><a class="btn primary" href="https://apps.apple.com/app/id6813288363" target="_blank" rel="noopener">Bitcoin Ticker on the App Store</a><a class="btn" href="./">The product suite</a></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>Bitcoin Radio · a Bitcoin Ticker product by Spartadata LLC</span><span class="spacer"></span><span>Free to embed. Please keep the credit on the card layout.</span>
+</footer>
+
+<script src="https://bitcointicker-radio.yellow-glade-3f5f.workers.dev/embed.js" async></script>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){var t=document.getElementById(b.dataset.copy).innerText;navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1400)});});});
+</script>
+</body>
+</html>
